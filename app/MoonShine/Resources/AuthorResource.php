@@ -46,9 +46,9 @@ class AuthorResource extends ModelResource
     public function formFields(): array
     {
         return [
-            Text::make('Имя', 'name')->sortable(),
-            Text::make('Фамилия', 'surname')->sortable(),
-            Text::make('Биография', 'biography')->sortable(),
+            Text::make('Имя', 'name'),
+            Text::make('Фамилия', 'surname'),
+            Text::make('Биография', 'biography')->nullable(),
         ];
     }
 
@@ -56,7 +56,16 @@ class AuthorResource extends ModelResource
     {
         return [
             ID::make(),
+            Text::make('Имя', 'name'),
+            Text::make('Фамилия', 'surname'),
+            Text::make('Биография', 'biography'),
         ];
+    }
+
+
+    public function search(): array
+    {
+        return ['surname', 'biography'];
     }
 
 
