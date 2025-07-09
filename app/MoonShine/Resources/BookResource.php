@@ -33,8 +33,8 @@ class BookResource extends ModelResource
             ID::make()->sortable(),
             Text::make('Название','title')->sortable(),
             Text::make('Год издания','publication_year' )->sortable(),
-            BelongsTo::make('Автор', 'author')->sortable(),
-            BelongsTo::make('Жанр', 'genre')->sortable(),
+            BelongsTo::make('Автор', 'author', formatted: fn($author)=> "$author->name $author->surname")->sortable(),
+            BelongsTo::make('Жанр', 'genre', formatted: 'name')->sortable(),
             Number::make('Цена', 'price')->sortable(),
             Number::make('Количество','count')->sortable(),
         ];
@@ -51,8 +51,8 @@ class BookResource extends ModelResource
                 ->nullable(),
             CKEditor::make('Описание','description')->nullable(),
             Text::make('Год издания','publication_year' ),
-            BelongsTo::make('Автор', 'author'),
-            BelongsTo::make('Жанр', 'genre'),
+            BelongsTo::make('Автор', 'author', formatted: fn($author)=> "$author->name $author->surname"),
+            BelongsTo::make('Жанр', 'genre', formatted: 'name'),
             Number::make('Цена', 'price'),
             Number::make('Количество','count'),
         ];
@@ -66,8 +66,8 @@ class BookResource extends ModelResource
             Image::make('Обложка','cover'),
             CKEditor::make('Описание','description'),
             Text::make('Год издания','publication_year' ),
-            BelongsTo::make('Автор', 'author'),
-            BelongsTo::make('Жанр', 'genre'),
+            BelongsTo::make('Автор', 'author', formatted: fn($author)=> "$author->name $author->surname"),
+            BelongsTo::make('Жанр', 'genre', formatted: 'name'),
             Number::make('Цена', 'price'),
             Number::make('Количество','count'),
         ];
