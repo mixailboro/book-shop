@@ -30,8 +30,15 @@ class Author extends Model
             ->whereExists(function ($query) {
                 $query->select(DB::raw(1))
                     ->from('books')
-                    ->whereColumn ('books.author_id', 'authors.id');
+                    ->whereColumn('books.author_id', 'authors.id');
             })
             ->get();
+    }
+
+
+    public function getFullname(): string
+    {
+        return $this->name . ' ' . $this->surname;
+
     }
 }
