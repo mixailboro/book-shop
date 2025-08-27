@@ -1,8 +1,24 @@
 /*********************************************************************************
 
-	Template Name: Boighor Bookshop Responsive Bootstrap4 Template  
+	Template Name: Boighor Bookshop Responsive Bootstrap4 Template
 	Description: Template description
 	Version: 1.0
 	Note: This is custom css. All custom styles (user styles) declare here.
 
 **********************************************************************************/
+
+.pseudo_cover{
+    height: 57.7vh;
+    background-color: #e59285;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.cover_title{
+    font-size: 2vw;
+    font-weight: bolder;
+}
+
+.cover_author{
+    font-size: 1vw;
+}

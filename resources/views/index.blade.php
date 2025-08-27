@@ -17,8 +17,20 @@
                 <div class="product product__style--3">
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                         <div class="product__thumb">
-                            <a class="first__img" href="single-product.html"><img src="images/books/1.jpg" alt="product image"></a>
-                            <a class="second__img animation1" href="single-product.html"><img src="images/books/2.jpg" alt="product image"></a>
+                            <a class="first__img" href="single-product.html">
+                                @if($book->cover)
+                                    <img src="{{asset('storage/' . $book->cover) }}" alt="product image">
+                                @else
+                                    <div class="pseudo_cover">
+                                        <div class="cover_title">
+                                            {{$book->title}}
+                                        </div>
+                                        <div class="cover_author">
+                                            {{$book->author->getFullname() }}
+                                        </div>
+                                    </div>
+                                @endif
+                            </a>
                         </div>
                         <div class="product__content content--center">
                             <h4><a href="single-product.html">{{ $book->title }}</a></h4>
@@ -74,8 +86,20 @@
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                                     <div class="product product__style--3">
                                         <div class="product__thumb">
-                                            <a class="first__img" href="single-product.html"><img src="images/books/1.jpg" alt="product image"></a>
-                                            <a class="second__img animation1" href="single-product.html"><img src="images/books/2.jpg" alt="product image"></a>
+                                            <a class="first__img" href="single-product.html">
+                                                @if($book->cover)
+                                                    <img src="{{asset('storage/' . $book->cover) }}" alt="product image">
+                                                @else
+                                                    <div class="pseudo_cover">
+                                                        <div class="cover_title">
+                                                            {{$book->title}}
+                                                        </div>
+                                                        <div class="cover_author">
+                                                            {{$book->author->getFullname() }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </a>
                                         </div>
                                         <div class="product__content content--center content--center">
                                             <h4><a href="single-product.html">{{$book->title}}</a></h4>
@@ -159,7 +183,9 @@
                 <!-- Single product start -->
                 <div class="product product__style--3">
                     <div class="product__thumb">
-                        <a class="first__img" href="single-product.html"><img src="images/best-sell-product/1.jpg" alt="product image"></a>
+                        <a class="first__img" href="single-product.html">
+                            <img src="{{asset('storage/' . $author->photo)}}" alt="product image">
+                        </a>
                     </div>
                     <div class="product__content content--center">
                         <h4>

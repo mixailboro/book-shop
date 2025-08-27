@@ -7,6 +7,7 @@ namespace App\MoonShine\Resources;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Author;
 
+use MoonShine\Fields\Image;
 use MoonShine\Fields\Text;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
@@ -49,6 +50,10 @@ class AuthorResource extends ModelResource
             Text::make('Имя', 'name'),
             Text::make('Фамилия', 'surname'),
             Text::make('Биография', 'biography')->nullable(),
+            Image::make('Photo', 'photo')
+                ->dir('authors_photo')
+                ->allowedExtensions(['jpg','jpeg','png','gif'])
+                ->removable(),
         ];
     }
 
@@ -59,6 +64,7 @@ class AuthorResource extends ModelResource
             Text::make('Имя', 'name'),
             Text::make('Фамилия', 'surname'),
             Text::make('Биография', 'biography'),
+            Image::make('Фото', 'photo'),
         ];
     }
 
