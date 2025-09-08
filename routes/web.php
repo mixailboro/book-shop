@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
@@ -29,5 +30,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('/books', BookController::class);
+
+Route::get('/authors/{author}', [AuthorController::class, 'show'])->name('authors.show');
 
 require __DIR__.'/auth.php';

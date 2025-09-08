@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Author;
+use App\Models\Genre;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller
@@ -34,9 +38,15 @@ class AuthorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Author $author)
+    public function show(Author $author): Factory|Application|View
     {
-        //
+        $genres = [];
+        foreach ($author->books()->get() as $book) {
+            $genres[] = $book->genre->name;
+        }
+        $genres = array_unique($genres);
+
+        return view('author_show', compact('author', 'genres'));
     }
 
     /**

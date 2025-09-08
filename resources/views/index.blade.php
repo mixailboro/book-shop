@@ -183,7 +183,7 @@
                 <!-- Single product start -->
                 <div class="product product__style--3">
                     <div class="product__thumb">
-                        <a class="first__img" href="single-product.html">
+                        <a class="first__img" href="{{route('authors.show' , $author->id)}}">
                             <img src="{{asset('storage/' . $author->photo)}}" alt="product image">
                         </a>
                     </div>
