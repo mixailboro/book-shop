@@ -13,7 +13,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return Book::all();
+        return Book::existBooks()->get();
     }
 
     /**

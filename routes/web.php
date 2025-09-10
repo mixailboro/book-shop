@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -32,5 +34,9 @@ Route::middleware('auth')->group(function () {
 Route::resource('/books', BookController::class);
 
 Route::get('/authors/{author}', [AuthorController::class, 'show'])->name('authors.show');
+
+Route::get('genres/{genre}', [GenreController::class, 'show'])->name('genres.show');
+
+Route::get('/contacts', [ContactController::class, 'show'])->name('contacts.show');
 
 require __DIR__.'/auth.php';
