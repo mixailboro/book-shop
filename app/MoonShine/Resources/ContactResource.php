@@ -7,6 +7,10 @@ namespace App\MoonShine\Resources;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Contact;
 
+use Illuminate\Notifications\Action;
+use MoonShine\Fields\Email;
+use MoonShine\Fields\Phone;
+use MoonShine\Fields\Text;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
@@ -22,6 +26,16 @@ class ContactResource extends ModelResource
 
     protected string $title = 'Contacts';
 
+    public function getActiveActions(): array
+    {
+        if (Contact::query()->first()) {
+            return ['view', 'update'];
+        }else {
+            return ['create'];
+        }
+
+    }
+
     /**
      * @return list<MoonShineComponent|Field>
      */
@@ -30,9 +44,14 @@ class ContactResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
+                Text::make('Address'),
+                Phone::make('Phone'),
+                Email::make('Email'),
             ]),
         ];
     }
+
+
 
     /**
      * @param Contact $item
