@@ -40,7 +40,21 @@
                             <div class="action">
                                 <div class="actions_inner">
                                     <ul class="add_to_links">
-                                        <li><a class="cart" href="cart.html"><i class="bi bi-shopping-bag4"></i></a></li>
+                                        <li>
+                                            <form
+                                                action="{{ route ('cart.store',) }}"
+                                                method="post"
+                                                class="cart"
+                                            >
+                                                @csrf
+                                                <input type="hidden" name="book_id" value="{{ $book->id }}">
+
+                                                <button type="submit">
+                                                    <i class="bi bi-shopping-bag4"></i>
+                                                </button>
+                                            </form>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -109,7 +123,11 @@
                                             <div class="action">
                                                 <div class="actions_inner">
                                                     <ul class="add_to_links">
-                                                        <li><a class="cart" href="cart.html"><i class="bi bi-shopping-bag4"></i></a></li>
+                                                        <li>
+                                                            <a class="cart" href="{{ route ('cart.store', $book) }}">
+                                                                <i class="bi bi-shopping-bag4"></i>
+                                                            </a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
