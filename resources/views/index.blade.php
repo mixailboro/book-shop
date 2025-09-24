@@ -48,6 +48,7 @@
                                             >
                                                 @csrf
                                                 <input type="hidden" name="book_id" value="{{ $book->id }}">
+                                                <input type="hidden" name="quantity" value="1">
 
                                                 <button type="submit">
                                                     <i class="bi bi-shopping-bag4"></i>
