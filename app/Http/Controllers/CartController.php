@@ -25,7 +25,7 @@ class CartController extends Controller
             $data['user_id'] = Auth::id();
             $cart->user_id = $data['user_id'];
             $cart->save();
-            $book = Book::query()->firstOrFail($data['book_id']);
+            $book = Book::query()->findOrFail($data['book_id']);
             $cart->books()->attach($book, ['quantity' => $data['quantity']]);
             $cart->total_cost = $this->calculateTotalCost($cart);
             $cart->save();
@@ -57,7 +57,7 @@ class CartController extends Controller
     public function update(StoreRequest $request, Cart $cart)
     {
         $data = $request->validated();
-        $book = Book::query()->firstOrFail($data['book_id']);
+        $book = Book::query()->findOrFail($data['book_id']);
 
         if (!$bookCart = $cart->books()->find($book->id)) {
             $cart->books()->attach($book, ['quantity' => $data['quantity']]);
